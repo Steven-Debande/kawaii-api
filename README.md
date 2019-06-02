@@ -1,3 +1,5 @@
 # kawaii-api
-https://api.codacy.com/project/badge/Grade/5b33a99af0354243aed014e014e5eda8?isInternal=true
+[![Codacy Badge](c)](https://www.codacy.com/app/Steven-Debande/kawaii-api?utm_source=github.com&utm_medium=referral&utm_content=Steven-Debande/kawaii-api&utm_campaign=Badge_Grade_Dashboard)
 Api restful random image
+
+
