@@ -4,10 +4,10 @@ const endpoints = require("../../package.json").endpoints;
 const baseURL = process.argv.includes("--local") ? "localhost:5025" : "Your domain";
 
 const { Router } = require("express");
-const RateLimite = require("express-rate-limit");
+const rateLimite = require("express-rate-limit");
 const Database = require("../extends/DatabaseManager");
 
-const requests = RateLimite({
+const requests = rateLimite({
     windowMs: 1 * 60 *1000,
     max: 125,
     message: {
@@ -22,7 +22,7 @@ router.get(["/", "/v1"], (req, res) => {
     const dataItems = {
         infos: {
             method: "GET",
-            base_api: `${baseURL}/api/v1/:endpoint`,
+            baseapi: `${baseURL}/api/v1/:endpoint`,
             endpoints: endpoints
         }
     };
