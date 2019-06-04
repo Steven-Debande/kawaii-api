@@ -5,7 +5,7 @@ const baseURL = process.argv.includes("--local") ? "localhost:5025" : "Your doma
 
 const { Router } = require("express");
 const rateLimite = require("express-rate-limit");
-const Database = require("../extends/DatabaseManager");
+const database = require("../extends/DatabaseManager");
 
 const requests = rateLimite({
     windowMs: 1 * 60 *1000,
@@ -19,14 +19,11 @@ const requests = rateLimite({
 const router = Router();
 
 router.get(["/", "/v1"], (req, res) => {
-    const dataItems = {
-        infos: {
-            method: "GET",
-            baseapi: `${baseURL}/api/v1/:endpoint`,
-            endpoints: endpoints
-        }
-    };
-    res.status(200).json(dataItems);
+    res.status(200).json({
+        method: "GET",
+        baseapi: `${baseURL}/api/v1/:endpoint`,
+        endpoints: endpoints
+    });
 })
 .get("/v1/:endpoint", requests, (req, res) => {
     if (!endpoints.includes(req.params.endpoint)) {
@@ -34,7 +31,7 @@ router.get(["/", "/v1"], (req, res) => {
             message: `"${req.params.endpoint}" invalid endpoint`
         });
     }
-    const random = Database.random(req.params.endpoint);
+    const random = database.random(req.params.endpoint);
     res.status(200).json({
         url: `${baseURL}/v1/${random}`
     });
