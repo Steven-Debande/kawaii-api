@@ -30,7 +30,7 @@
     "better-sqlite-pool": "^0.2.2",
     "body-parser": "^1.19.0",
     "enmap": "^4.8.7",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-rate-limit": "^4.0.4",
     "morgan": "^1.9.1"
   }
